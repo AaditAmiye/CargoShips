@@ -1,4 +1,7 @@
 import './App.css';
+
+
+
 import bgimg from './assets/bg.jpeg';
 import Map from './compnents/map/map';
 import Search from './compnents/search/search';
@@ -10,7 +13,7 @@ function App() {
         <img src={bgimg} alt="" />
       </div>
 
-      <Map />
+      <Map /> 
       <Search/>
       <Msc/>
     </>
