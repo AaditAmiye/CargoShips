@@ -1,20 +1,54 @@
 import "./search.css";
-import { useState } from "react";
+import {
+  useState,
+} from "react";
 
-function Search() {
-  const [searching, setSearching] = useState(false);
+function Search({
+  ships,
+  setSelectedShip,
+}) {
+  const [searching,
+    setSearching] =
+    useState(false);
 
-  const handleSearch = (e) => {
+  const [
+    value,
+    setValue,
+  ] = useState("");
+
+  const handleSearch = (
+    e
+  ) => {
     if (e.key === "Enter") {
       setSearching(true);
 
-      console.log("ENTER");
+      const ship =
+        ships.find(
+          (s) =>
+            s.imo === value ||
+            s.mmsi === value ||
+            s.name
+              .toLowerCase()
+              .includes(
+                value.toLowerCase()
+              )
+        );
+
+      if (ship) {
+        setSelectedShip(
+          ship
+        );
+      } else {
+        alert(
+          "Ship not found"
+        );
+      }
 
       window.dispatchEvent(
-        new CustomEvent("searchLocation")
+        new CustomEvent(
+          "searchLocation"
+        )
       );
-
-      
     }
   };
 
@@ -27,8 +61,16 @@ function Search() {
       }
     >
       <input
-        placeholder="Search..."
-        onKeyDown={handleSearch}
+        placeholder="IMO / MMSI / Ship Name"
+        value={value}
+        onChange={(e) =>
+          setValue(
+            e.target.value
+          )
+        }
+        onKeyDown={
+          handleSearch
+        }
       />
     </div>
   );

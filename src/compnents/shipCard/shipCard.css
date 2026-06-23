@@ -1,0 +1,46 @@
+.shipCard {
+  position: absolute;
+
+  top: 4vh;
+  left: 4vh;
+
+  width: 28vw;
+  height: 92vh;
+
+  padding: 3vh;
+
+  border-radius: 30px;
+
+  background:
+    rgba(
+      120,
+      140,
+      160,
+      0.22
+    );
+
+  backdrop-filter:
+    blur(25px);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  color: white;
+
+  z-index: 100;
+}
+
+.shipCard h1 {
+  margin-bottom: 3vh;
+}
+
+.shipCard p {
+  margin-bottom: 2vh;
+  font-size: 1.1rem;
+}
